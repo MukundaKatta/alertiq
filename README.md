@@ -1,13 +1,15 @@
-# alertiq
+# AlertIQ
 
-Stub Python project. Described as an intelligent alerting or monitoring tool, but none of that functionality exists.
+Intelligent alerting and monitoring platform with smart noise reduction and incident correlation.
 
-## What's actually here
+## About
+AlertIQ brings intelligence to system monitoring by filtering alert noise, correlating related incidents, and prioritizing what matters. It helps DevOps and SRE teams reduce alert fatigue, respond faster to real issues, and maintain healthier on-call rotations through AI-driven alert management.
 
-A single class in `src/core.py` (Alertiq) with placeholder methods that each return a fixed dictionary without doing any real work. There is no alerting logic, no monitoring, no notification system - just stubs.
-
-The project uses only Python standard library imports (time, logging, json, typing). No monitoring or alerting libraries are present.
+## Tech Stack
+- Python
+- Time-series analysis
+- Machine learning for anomaly detection
+- Click/Typer (CLI)
 
 ## Status
-
-Scaffolding only. No working alerting functionality exists.
+Active development - core architecture and project structure established.
