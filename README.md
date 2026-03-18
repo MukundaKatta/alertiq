@@ -1,43 +1,13 @@
 # alertiq
 
-**AlertIQ — AI SOC Analyst. Automated security alert triage, correlation, and incident response.**
+Stub Python project. Described as an intelligent alerting or monitoring tool, but none of that functionality exists.
 
-![Build](https://img.shields.io/badge/build-passing-brightgreen) ![License](https://img.shields.io/badge/license-proprietary-red)
+## What's actually here
 
-## Install
-```bash
-pip install -e ".[dev]"
-```
+A single class in `src/core.py` (Alertiq) with placeholder methods that each return a fixed dictionary without doing any real work. There is no alerting logic, no monitoring, no notification system - just stubs.
 
-## Quick Start
-```python
-from src.core import Alertiq
- instance = Alertiq()
-r = instance.manage(input="test")
-```
+The project uses only Python standard library imports (time, logging, json, typing). No monitoring or alerting libraries are present.
 
-## CLI
-```bash
-python -m src status
-python -m src run --input "data"
-```
+## Status
 
-## API
-| Method | Description |
-|--------|-------------|
-| `manage()` | Manage |
-| `automate()` | Automate |
-| `schedule()` | Schedule |
-| `execute()` | Execute |
-| `get_status()` | Get status |
-| `optimize()` | Optimize |
-| `get_stats()` | Get stats |
-| `reset()` | Reset |
-
-## Test
-```bash
-pytest tests/ -v
-```
-
-## License
-(c) 2026 Officethree Technologies. All Rights Reserved.
+Scaffolding only. No working alerting functionality exists.
