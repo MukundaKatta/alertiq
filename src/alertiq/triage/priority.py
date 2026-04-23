@@ -2,12 +2,14 @@
 
 from __future__ import annotations
 
+import ipaddress
+
 from alertiq.models import Alert, AlertCategory, Severity
 
 
 # Base severity scores per category
 _CATEGORY_BASE_SCORES: dict[AlertCategory, float] = {
-    AlertCategory.MALWARE: 70.0,
+    AlertCategory.MALWARE: 50.0,
     AlertCategory.PHISHING: 55.0,
     AlertCategory.BRUTE_FORCE: 45.0,
     AlertCategory.DATA_EXFIL: 85.0,
@@ -101,20 +103,21 @@ class PriorityEngine:
 
         return bonus
 
-    @staticmethod
-    def _is_private_ip(ip: str) -> bool:
+    _PRIVATE_NETWORKS = [
+        ipaddress.ip_network("10.0.0.0/8"),
+        ipaddress.ip_network("172.16.0.0/12"),
+        ipaddress.ip_network("192.168.0.0/16"),
+        ipaddress.ip_network("127.0.0.0/8"),
+    ]
+
+    @classmethod
+    def _is_private_ip(cls, ip: str) -> bool:
         """Check if an IP address is in a private range."""
-        return (
-            ip.startswith("10.")
-            or ip.startswith("192.168.")
-            or ip.startswith("172.16.")
-            or ip.startswith("172.17.")
-            or ip.startswith("172.18.")
-            or ip.startswith("172.19.")
-            or ip.startswith("172.2")
-            or ip.startswith("172.3")
-            or ip.startswith("127.")
-        )
+        try:
+            addr = ipaddress.ip_address(ip)
+            return any(addr in net for net in cls._PRIVATE_NETWORKS)
+        except ValueError:
+            return False
 
     @staticmethod
     def _score_to_severity(score: float) -> Severity:
